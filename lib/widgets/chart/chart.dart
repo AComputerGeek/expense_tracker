@@ -1,3 +1,6 @@
+// @author: Amir Armion
+// @version: V.01
+
 import 'package:flutter/material.dart';
 
 import 'package:expense_tracker/widgets/chart/chart_bar.dart';
@@ -36,7 +39,7 @@ class Chart extends StatelessWidget {
         MediaQuery.of(context).platformBrightness == Brightness.dark;
 
     return Container(
-      margin: const EdgeInsets.all(20),
+      margin: const EdgeInsets.all(15),
       padding: const EdgeInsets.symmetric(
         vertical: 20,
         horizontal: 7,
