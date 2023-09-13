@@ -2,7 +2,7 @@
 
 A new Flutter project.
 
-Demo:
+## Demo:
 
 https://github.com/AComputerGeek/expense_tracker/assets/107828537/0dabc886-1386-4b7d-9ad1-76d4ed8272a9
 
