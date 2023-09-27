@@ -2,13 +2,6 @@
 
 A new Flutter project.
 
-## Demo:
-
-https://github.com/AComputerGeek/expense_tracker/assets/107828537/f62e9143-1595-4f0d-b6cf-c2028b7fd91a
-
-
-
-
 ## Getting Started
 
 This project is a starting point for a Flutter application.

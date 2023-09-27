@@ -62,18 +62,20 @@ class _ExpensesState extends State<Expenses> {
 
     ScaffoldMessenger.of(context).clearSnackBars();
 
-    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-      content: const Text('Expense Deleted!'),
-      duration: const Duration(seconds: 3),
-      action: SnackBarAction(
-        label: 'Undo',
-        onPressed: () {
-          setState(() {
-            _registeredExpenses.insert(expenseIndex, expense);
-          });
-        },
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: const Text('Expense Deleted!'),
+        duration: const Duration(seconds: 3),
+        action: SnackBarAction(
+          label: 'Undo',
+          onPressed: () {
+            setState(() {
+              _registeredExpenses.insert(expenseIndex, expense);
+            });
+          },
+        ),
       ),
-    ));
+    );
   }
 
   @override

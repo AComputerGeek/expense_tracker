@@ -18,6 +18,7 @@ void main() {
   // ]).then((fn) {
   runApp(
     MaterialApp(
+      debugShowCheckedModeBanner: false,
       // Theming
       theme: ThemeData().copyWith(
         useMaterial3: true,
@@ -45,8 +46,7 @@ void main() {
                 color: kColorScheme.onSecondaryContainer,
               ),
             ),
-      ),
-      debugShowCheckedModeBanner: false,
+      ),      
       home: const Expenses(),
     ),
   );
