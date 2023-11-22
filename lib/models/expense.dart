@@ -21,12 +21,7 @@ const categoryIcons = {
 };
 
 class Expense {
-  Expense(
-    this.title,
-    this.amount,
-    this.date,
-    this.category,
-  ) : id = uuid.v4();
+  Expense(this.title, this.amount, this.date, this.category) : id = uuid.v4();
 
   final String id;
   final String title;
@@ -34,6 +29,7 @@ class Expense {
   final DateTime date;
   final Category category;
 
+  // Getting formatted date
   String get formattedDate {
     return formatter.format(date);
   }

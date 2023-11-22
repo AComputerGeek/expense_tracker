@@ -27,11 +27,13 @@ class _NewExpenseState extends State<NewExpense> {
   DateTime? _selectedDate;
   Category? _selectedCategory;
 
-  // Always we have to dispose the controller we have created (when widget is not needed it anymore)
+  // Always we have to dispose the controller we have created (when widget is not needed it anymore).
+  // This method is called automatically by Flutter.
   @override
   void dispose() {
     _titleController.dispose();
     _amountController.dispose();
+
     super.dispose();
   }
 
@@ -68,7 +70,7 @@ class _NewExpenseState extends State<NewExpense> {
                   Navigator.pop(ctx); // Closing the dialog
                 },
                 child: const Text('Okay!'),
-              )
+              ),
             ],
           );
         },
@@ -87,7 +89,7 @@ class _NewExpenseState extends State<NewExpense> {
                   Navigator.pop(ctx); // Closing the dialog
                 },
                 child: const Text('Okay!'),
-              )
+              ),
             ],
           );
         },
@@ -106,10 +108,11 @@ class _NewExpenseState extends State<NewExpense> {
     } else {
       widget.addExpense(
         Expense(
-            _titleController.text.trim(),
-            double.tryParse(_amountController.text)!,
-            _selectedDate!,
-            _selectedCategory!),
+          _titleController.text.trim(),
+          double.tryParse(_amountController.text)!,
+          _selectedDate!,
+          _selectedCategory!,
+        ),
       );
 
       Navigator.pop(context);
@@ -131,11 +134,10 @@ class _NewExpenseState extends State<NewExpense> {
         child: SingleChildScrollView(
           // Make scrollable when keyboard come up
           child: Padding(
-            padding: EdgeInsets.fromLTRB(25, 25, 25, keyboardSpace + 20),
+            padding: EdgeInsets.fromLTRB(25, 45, 25, keyboardSpace + 20),
             child: Column(
               children: [
-                // Landscape mode
-                if (width >= 600)
+                if (width >= 600) // Landscape mode
                   Row(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -164,21 +166,21 @@ class _NewExpenseState extends State<NewExpense> {
                       )
                     ],
                   )
-                else
+                else // Portrait mode
                   TextField(
                     controller: _titleController,
-                    maxLength: 50,
+                    maxLength: 30,
                     keyboardType: TextInputType.text,
                     decoration: const InputDecoration(
                       label: Text('Title'),
                     ),
                   ),
-                // Landscape mode
-                if (width >= 600)
+                if (width >= 600) // Landscape mode
                   Row(
                     children: [
                       DropdownButton(
                         value: _selectedCategory, // Showing on screen
+                        hint: const Text("Category"),
                         items: Category.values
                             .map(
                               (eachCategory) => DropdownMenuItem(
@@ -206,7 +208,7 @@ class _NewExpenseState extends State<NewExpense> {
                           Text(
                             (_selectedDate == null)
                                 ? 'No date selected!'
-                                : formatter.format(_selectedDate!).toString(),
+                                : formatter.format(_selectedDate!),
                           ),
                           IconButton(
                             onPressed: _datePicker,
@@ -216,7 +218,7 @@ class _NewExpenseState extends State<NewExpense> {
                       ),
                     ],
                   )
-                else
+                else // Portrait mode
                   Row(
                     children: [
                       Expanded(
@@ -252,10 +254,9 @@ class _NewExpenseState extends State<NewExpense> {
                     ],
                   ),
                 const SizedBox(
-                  height: 10,
+                  height: 20,
                 ),
-                // Landscape mode
-                if (width >= 600)
+                if (width >= 600) // Landscape mode
                   Row(
                     children: [
                       const Spacer(),
@@ -275,11 +276,12 @@ class _NewExpenseState extends State<NewExpense> {
                       ),
                     ],
                   )
-                else
+                else // Portrait mode
                   Row(
                     children: [
                       DropdownButton(
                         value: _selectedCategory, // Showing on screen
+                        hint: const Text("Category"),
                         items: Category.values
                             .map(
                               (eachCategory) => DropdownMenuItem(

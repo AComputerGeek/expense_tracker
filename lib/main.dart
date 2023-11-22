@@ -46,7 +46,7 @@ void main() {
                 color: kColorScheme.onSecondaryContainer,
               ),
             ),
-      ),      
+      ),
       home: const Expenses(),
     ),
   );

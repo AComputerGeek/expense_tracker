@@ -27,8 +27,22 @@ class _ExpensesState extends State<Expenses> {
     Expense(
       "Cinema",
       15.69,
-      DateTime.now(),
+      DateTime(
+        DateTime.now().year,
+        DateTime.now().month,
+        DateTime.now().day - 3,
+      ),
       Category.leisure,
+    ),
+    Expense(
+      "Food",
+      27,
+      DateTime(
+        DateTime.now().year,
+        DateTime.now().month - 1,
+        DateTime.now().day - 10,
+      ),
+      Category.food,
     ),
   ];
 
@@ -60,6 +74,7 @@ class _ExpensesState extends State<Expenses> {
       _registeredExpenses.remove(expense);
     });
 
+    // Avoiding conflict snackbar
     ScaffoldMessenger.of(context).clearSnackBars();
 
     ScaffoldMessenger.of(context).showSnackBar(
@@ -96,12 +111,26 @@ class _ExpensesState extends State<Expenses> {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Flutter Expense Tracker!"),
+        title: const Text(
+          "Expense Tracker",
+          style: TextStyle(
+            fontSize: 22,
+          ),
+        ),
+        centerTitle: true,
+        toolbarHeight: 75,
         actions: [
-          IconButton(
-            onPressed: _openAddExpenseOverlay,
-            icon: const Icon(Icons.add),
-          )
+          Padding(
+            padding: const EdgeInsets.all(7),
+            child: IconButton(
+              onPressed: _openAddExpenseOverlay,
+              icon: const Icon(
+                Icons.add,
+                size: 28,
+                weight: 400,
+              ),
+            ),
+          ),
         ],
       ),
       body: width < 600
